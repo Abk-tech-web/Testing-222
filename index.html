@@ -315,14 +315,23 @@ loadParticles("particles-about");
 loadParticles("particles-services");
 loadParticles("particles-contact");
 
-/* SCROLL ANIMATION */
-const sections=document.querySelectorAll(".section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-  const top=sec.getBoundingClientRect().top;
-  const height=window.innerHeight;
-  if(top<height-100){
-    sec.classList.add("visible");
+/* SCROLL ANIMATION - Smooth Sliding */
+const sections = document.querySelectorAll(".section");
+
+function animateSections() {
+  sections.forEach((sec, index) => {
+    const top = sec.getBoundingClientRect().top;
+    const height = window.innerHeight;
+    if (top < height - 100) {
+      sec.style.transitionDelay = `${index * 0.15}s`; // stagger effect
+      sec.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", animateSections);
+window.addEventListener("load", animateSections); // ensures visible on load if already in viewport
+  
   }
 });
 });
