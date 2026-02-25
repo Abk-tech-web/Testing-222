@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ABK Tech.Ng | Software & Web Development</title>
+<title>ABK Tech Ng | Software & Web Development</title>
 <link rel="icon" type="image/png" href="favicon.png">
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -27,18 +27,26 @@ nav{
   padding:15px;
   display:flex;
   justify-content:center;
-  gap:40px;
+  gap:20px;
   z-index:1000;
 }
 
+/* NAV BUTTON STYLE */
 nav a{
-  color:white;
   text-decoration:none;
   font-weight:bold;
+  color:#0a0a0a;
+  background:#6ec6ff; /* soft sky blue */
+  padding:10px 22px;
+  border-radius:6px;
+  transition:0.3s;
+  box-shadow:0 0 10px rgba(110,198,255,0.4);
 }
 
 nav a:hover{
-  color:#00ffd5;
+  background:#8ed4ff;
+  box-shadow:0 0 20px rgba(110,198,255,0.9);
+  transform:translateY(-2px);
 }
 
 /* SECTIONS */
@@ -53,7 +61,7 @@ nav a:hover{
 /* HOME logo smaller */
 .hero{
   background: url('Abktechng.png') center center no-repeat;
-  background-size: 400px; /* controls logo size */
+  background-size: 400px;
   background-color:#000;
 }
 
@@ -75,7 +83,7 @@ nav a:hover{
   z-index:1;
 }
 
-/* darker overlay so text is readable */
+/* darker overlay */
 .section::before{
   content:"";
   position:absolute;
@@ -85,6 +93,12 @@ nav a:hover{
   left:0;
   background:rgba(0,0,0,0.65);
   z-index:0;
+}
+
+/* WELCOME TEXT SKY BLUE */
+.hero h1{
+  color:#6ec6ff; /* soft sky blue */
+  font-size:42px;
 }
 
 /* CARDS */
@@ -106,7 +120,7 @@ nav a:hover{
 
 .card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 20px cyan;
+  box-shadow:0 0 20px #6ec6ff;
 }
 
 /* BUTTON */
@@ -114,10 +128,16 @@ nav a:hover{
   display:inline-block;
   margin-top:20px;
   padding:12px 25px;
-  background:cyan;
-  color:black;
+  background:#6ec6ff;
+  color:#0a0a0a;
   text-decoration:none;
-  border-radius:5px;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#8ed4ff;
+  box-shadow:0 0 15px #6ec6ff;
 }
 </style>
 
@@ -135,7 +155,7 @@ nav a:hover{
 <section id="home" class="section hero">
 <div id="particles-home"></div>
 
-<h1>Welcome to ABK Tech.Ng</h1>
+<h1>Welcome to ABK Tech Ng</h1>
 <p id="greeting"></p>
 <p id="datetime"></p>
 <p>
@@ -150,7 +170,7 @@ We build modern websites, software, and digital solutions worldwide.
 
 <h1>About Us</h1>
 <p>
-ABK Tech.Ng is a professional technology company focused on software development,
+ABK Tech Ng is a professional technology company focused on software development,
 website creation, and digital innovation.
 </p>
 <p>
@@ -238,14 +258,14 @@ function loadParticles(id){
 particlesJS(id,{
 particles:{
 number:{value:50,density:{enable:true,value_area:800}},
-color:{value:"#00ffd5"},
+color:{value:"#6ec6ff"},
 shape:{type:"circle"},
 opacity:{value:0.5},
 size:{value:3,random:true},
 line_linked:{
 enable:true,
 distance:150,
-color:"#00ffd5",
+color:"#6ec6ff",
 opacity:0.4,
 width:1
 },
@@ -266,7 +286,6 @@ retina_detect:true
 
 }
 
-/* LOAD FOR ALL SECTIONS */
 loadParticles("particles-home");
 loadParticles("particles-about");
 loadParticles("particles-services");
@@ -275,4 +294,4 @@ loadParticles("particles-contact");
 </script>
 
 </body>
-</html>
+  </html>
