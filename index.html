@@ -16,6 +16,7 @@ body{
   background:#0a0a0a;
   color:white;
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -31,22 +32,22 @@ nav{
   z-index:1000;
 }
 
-/* NAV BUTTON STYLE - smaller size */
+/* NAV BUTTON STYLE - smaller */
 nav a{
   text-decoration:none;
   font-weight:bold;
   color:#0a0a0a;
   background:#6ec6ff; /* soft sky blue */
-  padding:8px 18px; /* smaller padding */
+  padding:6px 14px; /* smaller padding */
   border-radius:6px;
   transition:0.3s;
-  box-shadow:0 0 10px rgba(110,198,255,0.4);
-  font-size:14px; /* slightly smaller text */
+  box-shadow:0 0 8px rgba(110,198,255,0.4);
+  font-size:13px; /* slightly smaller text */
 }
 
 nav a:hover{
   background:#8ed4ff;
-  box-shadow:0 0 20px rgba(110,198,255,0.9);
+  box-shadow:0 0 15px rgba(110,198,255,0.8);
   transform:translateY(-2px);
 }
 
@@ -57,6 +58,15 @@ nav a:hover{
   text-align:center;
   position:relative;
   overflow:hidden;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* fade-in when visible */
+.section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* HOME logo smaller */
@@ -124,23 +134,35 @@ nav a:hover{
   box-shadow:0 0 20px #6ec6ff;
 }
 
-/* BUTTON - medium size */
+/* BUTTON - smaller */
 .btn{
   display:inline-block;
   margin-top:20px;
-  padding:10px 20px; /* smaller padding */
+  padding:8px 16px; /* smaller padding */
   background:#6ec6ff;
   color:#0a0a0a;
   text-decoration:none;
   border-radius:6px;
-  font-size:14px; /* smaller text */
+  font-size:13px; /* smaller text */
   transition:0.3s;
 }
 
 .btn:hover{
   background:#8ed4ff;
-  box-shadow:0 0 15px #6ec6ff;
+  box-shadow:0 0 12px #6ec6ff;
 }
+
+/* CONTACT LINKS */
+.contact-link{
+  color:#6ec6ff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.contact-link:hover{
+  color:#8ed4ff;
+}
+
 </style>
 
 </head>
@@ -219,11 +241,9 @@ We help businesses establish powerful online presence.
 
 <h1>Contact Us</h1>
 
-<p>Email: <a href="mailto:abktechng@gmail.com" style="color:#6ec6ff; text-decoration:none;">abktechng@gmail.com</a></p>
-<p>Phone: 
-  <a href="tel:+2347046644623" style="color:#6ec6ff; text-decoration:none;">+234704664623</a>
-</p>
-<p>Location: <a href="https://www.google.com/maps/search/?api=1&query=Worldwide" target="_blank" style="color:#6ec6ff; text-decoration:none;">Worldwide 🌐</a></p>
+<p>Email: <a href="mailto:abktechng@gmail.com" class="contact-link">abktechng@gmail.com</a></p>
+<p>Phone / WhatsApp: <a href="tel:+2347046644623" class="contact-link">+2347046644623</a></p>
+<p>Address: <a href="https://www.google.com/maps" target="_blank" class="contact-link">Worldwide 🌍</a></p>
 
 <a href="https://wa.me/2347046644623" class="btn">
 Chat on WhatsApp
@@ -295,6 +315,17 @@ loadParticles("particles-about");
 loadParticles("particles-services");
 loadParticles("particles-contact");
 
+/* SCROLL ANIMATION */
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+  const top=sec.getBoundingClientRect().top;
+  const height=window.innerHeight;
+  if(top<height-100){
+    sec.classList.add("visible");
+  }
+});
+});
 </script>
 
 </body>
