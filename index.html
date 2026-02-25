@@ -7,7 +7,6 @@
 <title>ABK Tech.Ng | Software & Web Development</title>
 <link rel="icon" type="image/png" href="favicon.png">
 
-<!-- Particles.js library -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <style>
@@ -51,40 +50,41 @@ nav a:hover{
   overflow:hidden;
 }
 
-/* HERO with background logo */
+/* HOME logo smaller */
 .hero{
-  background: url('Abktechng.png') center/cover no-repeat;
+  background: url('Abktechng.png') center center no-repeat;
+  background-size: 400px; /* controls logo size */
+  background-color:#000;
 }
 
-/* Particles canvas overlay */
-#particles-js{
+/* particle containers */
+#particles-home,
+#particles-about,
+#particles-services,
+#particles-contact{
   position:absolute;
-  top:0;
-  left:0;
   width:100%;
   height:100%;
-  z-index:0; /* behind text but on top of background */
-  pointer-events:none; /* so clicks pass through */
+  top:0;
+  left:0;
+  z-index:0;
 }
 
-.hero > *{
-  position: relative;
-  z-index:1; /* ensures content is above particles */
+.section > *{
+  position:relative;
+  z-index:1;
 }
 
-/* ABOUT */
-.about{
-  background:#111;
-}
-
-/* SERVICES */
-.services{
-  background:#0d0d0d;
-}
-
-/* CONTACT */
-.contact{
-  background:#111;
+/* darker overlay so text is readable */
+.section::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.65);
+  z-index:0;
 }
 
 /* CARDS */
@@ -125,96 +125,154 @@ nav a:hover{
 <body>
 
 <nav>
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <!-- HOME -->
 <section id="home" class="section hero">
-  <div id="particles-js"></div>
+<div id="particles-home"></div>
 
-  <h1>Welcome to ABK Tech.Ng</h1>
-  <p id="greeting"></p>
-  <p id="datetime"></p>
-  <p>We build modern websites, software, and digital solutions for clients worldwide.</p>
+<h1>Welcome to ABK Tech.Ng</h1>
+<p id="greeting"></p>
+<p id="datetime"></p>
+<p>
+We build modern websites, software, and digital solutions worldwide.
+</p>
+
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section about">
-  <h1>About Us</h1>
-  <p>ABK Tech.Ng is a professional technology company focused on software development, website creation, and digital innovation.</p>
-  <p>We help businesses and individuals establish powerful online presence using modern technologies.</p>
+<section id="about" class="section">
+<div id="particles-about"></div>
+
+<h1>About Us</h1>
+<p>
+ABK Tech.Ng is a professional technology company focused on software development,
+website creation, and digital innovation.
+</p>
+<p>
+We help businesses establish powerful online presence.
+</p>
+
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="section services">
-  <h1>Our Services</h1>
-  <div class="card-container">
-    <div class="card"><h3>Website Development</h3><p>Professional responsive websites.</p></div>
-    <div class="card"><h3>Software Development</h3><p>Custom desktop and web software.</p></div>
-    <div class="card"><h3>UI/UX Design</h3><p>Modern and user-friendly interfaces.</p></div>
-    <div class="card"><h3>Technical Support</h3><p>System maintenance and upgrades.</p></div>
-  </div>
+<section id="services" class="section">
+<div id="particles-services"></div>
+
+<h1>Our Services</h1>
+
+<div class="card-container">
+
+<div class="card">
+<h3>Website Development</h3>
+<p>Professional responsive websites.</p>
+</div>
+
+<div class="card">
+<h3>Software Development</h3>
+<p>Custom desktop and web software.</p>
+</div>
+
+<div class="card">
+<h3>UI/UX Design</h3>
+<p>Modern user-friendly interfaces.</p>
+</div>
+
+<div class="card">
+<h3>Technical Support</h3>
+<p>Maintenance and upgrades.</p>
+</div>
+
+</div>
+
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section contact">
-  <h1>Contact Us</h1>
-  <p>Email: abktechng@gmail.com</p>
-  <p>Phone / WhatsApp: +2347046644623</p>
-  <p>Location: Worldwide</p>
-  <a href="https://wa.me/2347046644623" class="btn">Chat on WhatsApp</a>
+<section id="contact" class="section">
+<div id="particles-contact"></div>
+
+<h1>Contact Us</h1>
+
+<p>Email: abktechng@gmail.com</p>
+<p>Phone / WhatsApp: +2347046644623</p>
+<p>Location: Worldwide</p>
+
+<a href="https://wa.me/2347046644623" class="btn">
+Chat on WhatsApp
+</a>
+
 </section>
 
 <script>
+
 /* GREETING */
 function updateGreeting(){
-  let now = new Date();
-  let hour = now.getHours();
-  let greeting = "";
-  if(hour < 12){ greeting="Good Morning 👋"; }
-  else if(hour < 18){ greeting="Good Afternoon 👋"; }
-  else{ greeting="Good Evening 👋"; }
-  document.getElementById("greeting").innerHTML = greeting;
+let now = new Date();
+let hour = now.getHours();
+let greeting="";
+if(hour<12){greeting="Good Morning 👋";}
+else if(hour<18){greeting="Good Afternoon 👋";}
+else{greeting="Good Evening 👋";}
+document.getElementById("greeting").innerHTML=greeting;
 }
 
 /* TIME */
 function updateTime(){
-  let now = new Date();
-  document.getElementById("datetime").innerHTML = now.toDateString()+" | "+now.toLocaleTimeString();
+let now=new Date();
+document.getElementById("datetime").innerHTML=
+now.toDateString()+" | "+now.toLocaleTimeString();
 }
 
 updateGreeting();
 updateTime();
 setInterval(updateTime,1000);
 
-/* PARTICLES.JS CONFIG */
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 60,
-      "density": { "enable": true, "value_area": 800 }
-    },
-    "color": { "value": "#00ffd5" },
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.5, "random": true },
-    "size": { "value": 3, "random": true },
-    "line_linked": { "enable": true, "distance": 150, "color": "#00ffd5", "opacity": 0.4, "width": 1 },
-    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "bounce": false }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": { "enable": true, "mode": "grab" },
-      "onclick": { "enable": true, "mode": "push" }
-    },
-    "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.7 } }, "push": { "particles_nb": 4 } }
-  },
-  "retina_detect": true
+
+/* PARTICLE CONFIG FUNCTION */
+function loadParticles(id){
+
+particlesJS(id,{
+particles:{
+number:{value:50,density:{enable:true,value_area:800}},
+color:{value:"#00ffd5"},
+shape:{type:"circle"},
+opacity:{value:0.5},
+size:{value:3,random:true},
+line_linked:{
+enable:true,
+distance:150,
+color:"#00ffd5",
+opacity:0.4,
+width:1
+},
+move:{enable:true,speed:2}
+},
+interactivity:{
+events:{
+onhover:{enable:true,mode:"grab"},
+onclick:{enable:true,mode:"push"}
+},
+modes:{
+grab:{distance:180,line_linked:{opacity:0.8}},
+push:{particles_nb:4}
+}
+},
+retina_detect:true
 });
+
+}
+
+/* LOAD FOR ALL SECTIONS */
+loadParticles("particles-home");
+loadParticles("particles-about");
+loadParticles("particles-services");
+loadParticles("particles-contact");
+
 </script>
 
 </body>
-                              </html>
+</html>
