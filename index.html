@@ -66,11 +66,15 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .btn:hover{background:#38bdf8;color:black;box-shadow:0 0 20px #38bdf8;}
 
 /* CONTACT LINKS */
-.contact-link{color:#38bdf8;text-decoration:none;transition:.3s;font-size:20px;margin:10px;}
-.contact-link:hover{color:white;transform:scale(1.2);}
+.contact-link{color:#38bdf8;text-decoration:none;transition:.3s;font-size:40px;margin:10px;display:flex;justify-content:center;align-items:center;}
+.contact-link:hover{color:white;transform:scale(1.3);}
+
+/* FLOATING ANIMATION FOR CONTACT ICONS */
+@keyframes floatIcon{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+.contact-link i{animation:floatIcon 4s ease-in-out infinite;}
 
 /* CONTACT ICONS GRID */
-.contact-grid{display:flex;gap:40px;justify-content:center;align-items:center;margin-top:20px;}
+.contact-grid{display:flex;gap:60px;justify-content:center;align-items:center;margin-top:20px;}
 
 /* SERVICES GRID */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;justify-items:center;align-items:start;margin-top:30px;}
@@ -125,11 +129,9 @@ If you’re ready to move from ordinary to exceptional, ABK Tech NG is ready to 
 <div class="card">Website Development</div>
 <div class="card">Software Development</div>
 <div class="card">UI/UX Design</div>
-<div class="card">Blockchain Solutions</div>
 <div class="card">Mobile App Development</div>
 <div class="card">Cloud Solutions</div>
 <div class="card">AI & Machine Learning</div>
-<div class="card">Cybersecurity</div>
 </div>
 </section>
 
@@ -188,7 +190,7 @@ container.appendChild(star);
 }
 
 /* TYPING EFFECT */
-const words=["Software Development","Website Development","Blockchain Solutions","UI/UX Design"];
+const words=["Software Development","Website Development","UI/UX Design"];
 let i=0,j=0,current="",isDeleting=false;
 function type(){
 current=words[i];
@@ -214,4 +216,4 @@ setTimeout(()=>dot.remove(),500);
 </script>
 
 </body>
-</html>
+  </html>
